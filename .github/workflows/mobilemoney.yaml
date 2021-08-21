@@ -1,1 +1,38 @@
 name: MobileMoney Build and Deployment Workflow
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone the Repository
+        uses: actions/checkout@v2
+
+      - name: Install Node Modules
+        run: npm install
+    
+      - name: Test package
+        run: npm test| tee npm-output.json
+
+      - name: Upload the npm output file
+        uses: actions/upload-artifact@v2
+        with:
+          name: npm-Output-file
+          path: npm-output.json
+        if: always()
+
+#build:
+ # runs-on: ubuntu-latest
+  #needs: test
+   # - name: npm build
+    #  run: npm run build
+#??
+
+#deploy:
+      
+ # ??
+  #push token???
+
+   #   continue-on-error: true
+
+
+    
