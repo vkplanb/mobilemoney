@@ -123,9 +123,11 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: build-files
-
+          
       - name: Debugging Verify the Path
         run: ls -R
 
       - name: Push the files to Surge Server
         run: surge ./ ${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
+
+        
