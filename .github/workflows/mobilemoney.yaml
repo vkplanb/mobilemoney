@@ -34,7 +34,7 @@ jobs:
           name: code-coverage-files
           path: coverage    
   
-  security-testing:
+  security-testing-retire:
     runs-on: ubuntu-latest
     needs: code-coverage
     steps:
@@ -61,7 +61,7 @@ jobs:
 
   security-testing-npm:
     runs-on: ubuntu-latest
-    needs: test
+    needs: code-coverage
     steps:
       - name: Clone the Repository
         uses: actions/checkout@v2
@@ -82,7 +82,7 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    needs: [security-testing, security-testing-npm]
+    needs: [security-testing-retire, security-testing-npm]
     steps:
       - name: Checkout the Code
         uses: actions/checkout@v2
