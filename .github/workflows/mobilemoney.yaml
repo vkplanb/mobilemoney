@@ -59,9 +59,30 @@ jobs:
           path: retire-output.json
         if: always()
 
+  security-testing-npm:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Clone the Repository
+        uses: actions/checkout@v2
+
+      - name: Install Node Modules
+        run: npm install
+
+      - name: run npm Audit
+        run: npm audit --json | tee npmaudit-output.json
+        continue-on-error: true
+      
+      - name: Upload the Safety Output file
+        uses: actions/upload-artifact@v2
+        with:
+          name: NPMAudit-Output-file
+          path: npmaudit-output.json
+        if: always()
+
   build:
     runs-on: ubuntu-latest
-    needs: security-testing
+    needs: [security-testing, security-testing-npm]
     steps:
       - name: Checkout the Code
         uses: actions/checkout@v2
