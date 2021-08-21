@@ -1,5 +1,12 @@
-import React as react;
+const { Profiler } = require("react")
 
-this is a login module
+Hey boss,
+
+while you are modifying the code of Profile.
+
+
+I have revampled the entire login module.Hey
+
+did you see any difference in your development.
 
 
