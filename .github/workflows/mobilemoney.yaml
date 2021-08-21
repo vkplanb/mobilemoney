@@ -82,7 +82,7 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    needs: [security-testing, security-testing-npm]
+    needs: security-testing, security-testing-npm
     steps:
       - name: Checkout the Code
         uses: actions/checkout@v2
