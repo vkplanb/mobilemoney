@@ -82,4 +82,4 @@ jobs:
         run: ls -R
 
       - name: Push the files to Surge Server
-        run: surge ./ ${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
+        run: surge ./ vkplanbtesting1234.surge.sh --token ${{ secrets.SURGE_TOKEN }}
